@@ -3,3 +3,4 @@ __pycache__
 data/raw 
 .env
 F1_Pit_Strategy_Optimizer_V1_TODO.txt
+data/cache/

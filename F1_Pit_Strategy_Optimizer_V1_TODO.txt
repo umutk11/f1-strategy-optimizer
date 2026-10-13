@@ -67,9 +67,9 @@ FAZ 1 — VERİYİ SEÇ VE İNCELE
 Amaç: Önce yalnızca kuru hava ve tek bir geçmiş yarışla çalış.
 
 [x] Başlangıç yarışı seç.
-[] Yarışın pist uzunluğu ve toplam tur sayısını kaydet.
-[] Yarıştaki 20 sürücünün başlangıç grid pozisyonlarını al.
-[] Tur/sector süreleri verisini al.
+[x] Yarışın pist uzunluğu ve toplam tur sayısını kaydet.
+[x] Yarıştaki 20 sürücünün başlangıç grid pozisyonlarını al.
+[x] Tur/sector süreleri verisini al.
 [] Stint, lastik hamuru ve lastik yaşı verisini al.
 [] Pit-in ve pit-out turlarını işaretle.
 [] Safety Car dönemlerini işaretle.
