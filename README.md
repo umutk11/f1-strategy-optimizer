@@ -143,8 +143,5 @@ The goal is to build a transparent and explainable decision-support simulator ra
 
 ## Author
 
-<<<<<<< HEAD
-[Umut Kahraman](https://github.com/umutk11)
-=======
 [Umut Kahraman](https://github.com/umutk11)
 >>>>>>> 8edfb7e6732e53a9473f8e334d1fbe3ecb533879
