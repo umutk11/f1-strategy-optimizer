@@ -86,8 +86,8 @@ EDA mikro adımları
 [x] Negatif/sıfır/gerçekçi olmayan tur sürelerini kontrol et.
 [x] Pit turlarının tur süresi dağılımını çiz.
 [x] Normal turların tur süresi dağılımını çiz.
-[] Lastik hamuruna göre tur sürelerini karşılaştır.
-[] Lastik yaşı arttıkça tur süresinin değişimini çiz.
+[x] Lastik hamuruna göre tur sürelerini karşılaştır.
+[x] Lastik yaşı arttıkça tur süresinin değişimini çiz.
 [] Sürücü bazlı ortalama pace tablosu çıkar.
 [] Safety Car turlarını normal turlardan ayır.
 [] EDA bulgularını README'ye 3–5 madde olarak ekle.
