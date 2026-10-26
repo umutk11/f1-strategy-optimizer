@@ -88,12 +88,12 @@ EDA mikro adımları
 [x] Normal turların tur süresi dağılımını çiz.
 [x] Lastik hamuruna göre tur sürelerini karşılaştır.
 [x] Lastik yaşı arttıkça tur süresinin değişimini çiz.
-[] Sürücü bazlı ortalama pace tablosu çıkar.
-[] Safety Car turlarını normal turlardan ayır.
+[x] Sürücü bazlı ortalama pace tablosu çıkar.
+[x] Safety Car turlarını normal turlardan ayır.
 [] EDA bulgularını README'ye 3–5 madde olarak ekle.
 
 Kontrol noktası:
-[] Her araç için tur zamanı, lastik bilgisi ve pit olayları okunabiliyor.
+[x] Her araç için tur zamanı, lastik bilgisi ve pit olayları okunabiliyor.
 
 
 FAZ 2 — VERİ TEMİZLEME PIPELINE'I
