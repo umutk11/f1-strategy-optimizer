@@ -81,7 +81,7 @@ Subset of `race_strategy_laps` containing pit-related laps only.
 
 ## `leclerc_laps`
 
-Selected lap-level data for Charles Leclerc.
+Selected lap-level data for Leclerc.
 
 | Column | Description |
 |---|---|
@@ -113,7 +113,7 @@ Time-based weather observations during the race.
 
 ## `race_classification`
 
-Race classification used to determine simulation eligibility.
+Race classification data used to determine simulation eligibility.
 
 | Column | Description |
 |---|---|
