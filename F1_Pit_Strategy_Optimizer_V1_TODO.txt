@@ -58,7 +58,7 @@ git commit -m "commit"
 git push
 
 Kontrol noktası:
-[] README, bağımlılıklar ve klasör yapısı bulunan temiz bir repo var.
+[x] README, bağımlılıklar ve klasör yapısı bulunan temiz bir repo var.
 
 
 FAZ 1 — VERİYİ SEÇ VE İNCELE
