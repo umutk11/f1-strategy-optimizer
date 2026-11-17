@@ -92,7 +92,7 @@ def format_duration(value, include_hours=False):
 def format_time_columns(laps):
     laps = laps.copy()
 
-    # show lap and sector durations as mm:ss:ms
+    # show lap and sector durations as mm:ss:msms
     for column in ["LapTime", "Sector1Time", "Sector2Time", "Sector3Time"]:
         laps[column] = laps[column].map(format_duration)
 
