@@ -19,6 +19,9 @@ def prepare_laps(laps, results):
     # keep the raw lap data unchanged
     laps = laps.copy()
 
+    # standardize driver abbreviations
+    laps["Driver"] = laps["Driver"].astype("string").str.strip().str.upper()
+
     # change lap times from text to seconds
     laps["LapTimeSeconds"] = (
         pd.to_timedelta(laps["LapTime"], errors="coerce")
@@ -37,11 +40,25 @@ def prepare_laps(laps, results):
     laps["IsPitInLap"] = laps["PitInTime"].notna()
     laps["IsPitOutLap"] = laps["PitOutTime"].notna()
     laps["IsPitRelatedLap"] = laps["IsPitInLap"] | laps["IsPitOutLap"]
+    # track status 4 indicates Safety Car
+    laps["IsSafetyCarLap"] = (
+        laps["TrackStatus"]
+        .astype("string")
+        .str.contains("4", regex=False, na=False)
+    )
 
-    # select driver details from the race results
+    # select and standardize driver details
     driver_info = results[
         ["Abbreviation", "TeamName", "GridPosition", "Status"]
-    ].rename(columns={"Abbreviation": "Driver"})
+    ].copy()
+
+    driver_info["Abbreviation"] = (
+        driver_info["Abbreviation"]
+        .astype("string")
+        .str.strip()
+        .str.upper()
+    )
+    driver_info = driver_info.rename(columns={"Abbreviation": "Driver"})
 
     # add driver details to every lap
     laps = laps.merge(
@@ -72,6 +89,15 @@ def validate_laps(laps):
 
     if (laps["LapTimeSeconds"] <= 0).any():
         raise ValueError("A lap time is zero or negative.")
+
+    if laps["Driver"].isna().any() or laps["TeamName"].isna().any():
+        raise ValueError("A driver is missing or not found in race results.")
+
+    if laps[["Stint", "TyreLife"]].isna().any().any():
+        raise ValueError("Stint or tyre life is missing.")
+
+    if (laps["Stint"] < 1).any() or (laps["TyreLife"] < 0).any():
+        raise ValueError("Stint or tyre life has an invalid value.")
 
 
 def format_duration(value, include_hours=False):
