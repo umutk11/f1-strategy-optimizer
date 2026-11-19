@@ -60,7 +60,7 @@ def prepare_laps(laps, results):
     )
     driver_info = driver_info.rename(columns={"Abbreviation": "Driver"})
 
-    # add driver details to every lap
+    # add driver details to all laps
     laps = laps.merge(
         driver_info,
         on="Driver",
@@ -71,7 +71,7 @@ def prepare_laps(laps, results):
     # sort laps by driver and lap number
     laps = laps.sort_values(["Driver", "LapNumber"]).copy()
 
-    # add up lap times for each driver
+    # add lap times for each driver
     laps["ElapsedLapTimeSeconds"] = (
         laps.groupby("Driver")["LapTimeSeconds"].cumsum().round(3)
     )
@@ -84,18 +84,23 @@ def validate_laps(laps):
     if laps.duplicated(["Driver", "LapNumber"]).any():
         raise ValueError("A driver has a repeated lap number.")
 
+    # stop if a lap time is missing or zero
     if laps["LapTimeSeconds"].isna().any():
         raise ValueError("Some lap times could not be converted.")
 
+    # stop if a lap time is zero or negative
     if (laps["LapTimeSeconds"] <= 0).any():
         raise ValueError("A lap time is zero or negative.")
 
+    # stop if a driver is missing or not found in race results
     if laps["Driver"].isna().any() or laps["TeamName"].isna().any():
         raise ValueError("A driver is missing or not found in race results.")
 
+    # stop if stint or tyre life is missing or invalid
     if laps[["Stint", "TyreLife"]].isna().any().any():
         raise ValueError("Stint or tyre life is missing.")
 
+    # stop if stint or tyre life is invalid
     if (laps["Stint"] < 1).any() or (laps["TyreLife"] < 0).any():
         raise ValueError("Stint or tyre life has an invalid value.")
 
