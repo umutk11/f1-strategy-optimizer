@@ -99,18 +99,18 @@ Kontrol noktası:
 FAZ 2 — VERİ TEMİZLEME PIPELINE'I
 ==================================
 
-[] src/data_processing.py oluştur.
-[] Ham veriyi okuyan fonksiyon yaz.
-[] Sürücü adlarını/kısaltmalarını standartlaştır.
-[] Zaman alanlarını saniye cinsine dönüştür.
-[] Pit-in ve pit-out turlarına pit flag ekle.
-[] Safety Car turlarına SC flag ekle.
-[] Her sürücü için stint numarası üret.
-[] Her stint için tyre_age hesapla.
-[] Her araç için race_time (kümülatif süre) hesapla.
-[] Her tur için sector bilgisi varsa sektöre ayır; yoksa önce tur bazlı devam et.
-[] Temizlenmiş veriyi data/processed/ içine kaydet.
-[] Pipeline için en az 3 unit test yaz.
+[x] src/data_processing.py oluştur.
+[x] Ham veriyi okuyan fonksiyon yaz.
+[x] Sürücü adlarını/kısaltmalarını standartlaştır.
+[x] Zaman alanlarını saniye cinsine dönüştür.
+[x] Pit-in ve pit-out turlarına pit flag ekle.
+[x] Safety Car turlarına SC flag ekle.
+[x] Her sürücü için stint numarası üret.
+[x] Her stint için tyre_age hesapla.
+[x] Her araç için race_time (kümülatif süre) hesapla.
+[x] Her tur için sector bilgisi varsa sektöre ayır; yoksa önce tur bazlı devam et.
+[x] Temizlenmiş veriyi data/processed/ içine kaydet.
+[x] Pipeline için en az 3 unit test yaz.
 
 Kontrol noktası:
 [] Tek komutla ham veri, simülasyona uygun temiz tabloya dönüşüyor.

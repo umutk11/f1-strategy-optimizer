@@ -68,8 +68,20 @@ def prepare_laps(laps, results):
         validate="many_to_one",
     )
 
+    # retired drivers stay in the data but are left out of the simulation
+    laps["IncludeInSimulation"] = laps["Status"] != "Retired"
+
     # sort laps by driver and lap number
     laps = laps.sort_values(["Driver", "LapNumber"]).copy()
+
+    # a new stint starts on every pit-out lap except a pit-lane start
+    new_stint = laps["IsPitOutLap"] & (laps["LapNumber"] > 1)
+    laps["StintNumber"] = new_stint.groupby(laps["Driver"]).cumsum() + 1
+
+    # laps driven on the current tyre set in this race
+    laps["TyreAge"] = (
+        laps.groupby(["Driver", "StintNumber"]).cumcount() + 1
+    )
 
     # add lap times for each driver
     laps["ElapsedLapTimeSeconds"] = (
@@ -103,6 +115,10 @@ def validate_laps(laps):
     # stop if stint or tyre life is invalid
     if (laps["Stint"] < 1).any() or (laps["TyreLife"] < 0).any():
         raise ValueError("Stint or tyre life has an invalid value.")
+
+    # stop if pit laps and source stint numbers disagree
+    if (laps["StintNumber"] != laps["Stint"]).any():
+        raise ValueError("Derived stint does not match source stint.")
 
 
 def format_duration(value, include_hours=False):
