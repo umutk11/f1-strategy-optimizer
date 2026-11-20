@@ -1,0 +1,10 @@
+{
+  "monza": {
+    "circuit_name": "Autodromo Nazionale Monza",
+    "season": 2024,
+    "event_name": "Italian Grand Prix",
+    "circuit_length_km": 5.793,
+    "total_laps": 53,
+    "race_distance_km": 306.72
+  }
+}
