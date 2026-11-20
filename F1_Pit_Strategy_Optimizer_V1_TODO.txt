@@ -121,21 +121,21 @@ FAZ 3 — TEMEL PACE VE LASTİK AŞINMASI MODELİ
 
 Amaç: Önce ML kullanmadan açıklanabilir bir baseline oluştur.
 
-[] src/pace_model.py oluştur.
-[] Her sürücü için clean-air base pace hesapla.
-[] Pit ve SC turlarını baseline hesaplamasından çıkar.
-[] Hamur bazlı başlangıç pace farkını hesapla.
-[] Hamur bazlı degradation rate hesapla.
-[] Baseline fonksiyonunu yaz:
+[x] src/pace_model.py oluştur.
+[x] Her sürücü için clean-air base pace hesapla.
+[x] Pit ve SC turlarını baseline hesaplamasından çıkar.
+[x] Hamur bazlı başlangıç pace farkını hesapla.
+[x] Hamur bazlı degradation rate hesapla.
+[x] Baseline fonksiyonunu yaz:
 
     predicted_lap_time = driver_base_pace
                        + compound_offset
                        + tyre_age * degradation_rate
 
-[] Tahmin edilen ve gerçek tur sürelerini karşılaştır.
-[] MAE hesapla.
-[] En kötü 10 tahmin örneğini incele.
-[] Model varsayımlarını README'ye yaz.
+[x] Tahmin edilen ve gerçek tur sürelerini karşılaştır.
+[x] MAE hesapla.
+[x] En kötü 10 tahmin örneğini incele.
+[x] Model varsayımlarını README'ye yaz.
 
 Opsiyonel ML iyileştirmesi
 --------------------------
@@ -147,7 +147,7 @@ Opsiyonel ML iyileştirmesi
 [] Daha kötü model varsa baseline ile devam et ve sebebini not et.
 
 Kontrol noktası:
-[] Bir araca, lastiğe ve tyre_age değerine göre temiz hava tur süresi tahmin edilebiliyor.
+[x] Bir araca, lastiğe ve tyre_age değerine göre temiz hava tur süresi tahmin edilebiliyor.
 
 
 FAZ 4 — YARIŞ STATE VE TIMING SİSTEMİ

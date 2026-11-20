@@ -115,6 +115,25 @@ The project uses historical Formula 1 timing data, including:
 
 The primary data source will be [FastF1](https://github.com/theOehrly/Fast-F1), a Python package for accessing Formula 1 timing, telemetry, and session data.
 
+## Pace Model Assumptions
+
+`src/pace_model.py` is an explainable baseline without machine learning:
+
+```text
+predicted_lap_time = driver_base_pace
+                   + compound_offset
+                   + degradation_rate × tyre_life
+                   + fuel_s_per_kg × fuel_on_board
+```
+
+- **Clean laps only:** lap 1, pit-in/pit-out laps, Safety Car laps, inaccurate laps, retired drivers and laps slower than 107% of the driver's median are removed.
+- **Fuel effect:** 0.03 s per kg with 110 kg at the start, burned linearly (about 0.062 s/lap at Monza). This is a rough engineering rule of thumb, not an official figure. A free fit on the Monza data gives 0.060 s/lap, which supports the value.
+- **Joint fit:** driver pace, compound offset and per-compound degradation are estimated together with least squares after fuel correction. Hard is the reference compound.
+- **Tyre life** uses FastF1 `TyreLife`, which includes use before the race.
+- **Soft is not modelled:** Monza 2024 has only one clean Soft lap.
+- **No traffic model yet:** laps behind other cars count as clean-air laps; traffic is added in a later phase.
+- **Result (Monza 2024):** in-sample MAE 0.40 s on 921 laps. Hard degrades 0.049 s/lap, Medium 0.034 s/lap, and Medium is 0.39 s slower than Hard (graining on the Medium was reported in this race). The worst predictions are all slower-than-predicted laps in traffic or at the end of the race.
+
 ## Tech Stack
 
 - Python 3.11+

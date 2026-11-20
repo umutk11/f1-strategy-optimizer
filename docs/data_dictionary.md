@@ -77,6 +77,8 @@ Circuit-level constants used by the simulation.
 | circuit_length_km | Length of one lap in kilometres. |
 | total_laps | Scheduled race laps. |
 | race_distance_km | Total race distance in kilometres. |
+| start_fuel_kg | Fuel on board at the race start (2024 maximum: 110 kg). |
+| fuel_s_per_kg | Lap time cost of each kilogram of fuel on board, in seconds. |
 
 ## `data/processed/monza_2024_laps.csv`
 
